@@ -15,4 +15,28 @@ class TodoList < ApplicationRecord
 
     (100 * completed_items.to_f / total_items).round(1) 
   end
+
+  def status
+    case percent_complete.to_i
+    when 0
+      'Not Started'
+    when 100
+      'Completed'
+    else
+      'In Progress'
+    end
+  end
+
+  def badge_color
+
+  case percent_complete.to_i
+    when 0
+      'secondary'
+    when 100
+      'success'
+    else
+      'primary'
+    end
+  end
+
 end
