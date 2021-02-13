@@ -7,8 +7,16 @@
 
 <p>
   <strong>User:</strong>
-  <%= @todo_list.user_id %>
+  <%= @todo_list.user.username %>
 </p>
+
+<ul>
+  <% @todo_list.todo_items.each do |todo_item| %>
+    <li>
+      <%= todo_item.description %>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
 <%= link_to 'Back', todo_lists_path %>
