@@ -18,22 +18,42 @@
 
 <div class="card-body">
   <div class="progress mb-4">
-    <div class="progress-bar bg-info" role="progressbar" style="width: <%@todo_list.percent_complete %>%;" aria-valuenow="<%@todo_list.percent_complete %>%" aria-valuemin="0" aria-valuemax="100"><%@todo_list.percent_complete %>%</div>
+    <div class="progress-bar bg-info" role="progressbar" style="width: <%=@todo_list.percent_complete %>%;" aria-valuenow="<%=@todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100"><%=@todo_list.percent_complete %>%</div>
   </div>
 
   <ul class="list-group">
   <% @todo_list.todo_items.each do |todo_item| %>
     <li class="list-group-item">
 
+  
+    <% if todo_item.completed? %>
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="text-">
+        <s>
+          <%= todo_item.description %>
+        </s>
+      </span>
+
+      <%= link_to '#', class: 'icon' do %>
+        <i class="ri-checkbox-circle-fill"></i>
+      <% end %>
+    </div>
+
+
+    <% else %>
     <div class="d-flex justify-content-between align-items-center">
       <span>
         <%= todo_item.description %>
       </span>
 
-      <%= link_to '#', class: 'btn btn-info' do %>
-        <i class="icon ri-checkbox-circle-line"> </i>
+      <%= link_to '#', class: 'icon' do %>
+        <i class="ri-checkbox-blank-circle-line"></i>
       <% end %>
     </div>
+
+
+    <% end %>
+
     </li>
   <% end %>
 </ul>

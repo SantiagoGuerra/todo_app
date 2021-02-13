@@ -2,15 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .icon {
-    display: block;
-}
+  & > i {
+    font-size: 24px;
+  }
 
-i {
-    display: none im !important;
-}
+  & > .ri-checkbox-circle-fill {
+    color: var(--teal)
+  }
 
-.btn {
-    max-height: 42px;
-    display: flex;
-    align-items: center;
+  & > .ri-checkbox-blank-circle-line {
+    color: var(--secondary)
+  }
+
+  &:hover {
+    outline: none;
+    border: none;
+    text-decoration: none;
+  }
 }
