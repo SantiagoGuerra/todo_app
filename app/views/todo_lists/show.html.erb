@@ -22,41 +22,52 @@
   </div>
 
   <ul class="list-group">
-  <% @todo_list.todo_items.each do |todo_item| %>
-    <li class="list-group-item">
+    <% @todo_list.todo_items.each do |todo_item| %>
+      <li class="list-group-item">
 
-  
-    <% if todo_item.completed? %>
-    <div class="d-flex justify-content-between align-items-center">
-      <span class="text-checked">
-        <s>
+    
+      <% if todo_item.completed? %>
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-checked">
+          <s>
+            <%= todo_item.description %>
+          </s>
+        </span>
+
+        <%= link_to '#', class: 'icon' do %>
+          <i class="ri-checkbox-circle-fill"></i>
+        <% end %>
+      </div>
+
+
+      <% else %>
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-secondary">
           <%= todo_item.description %>
-        </s>
-      </span>
+        </span>
 
-      <%= link_to '#', class: 'icon' do %>
-        <i class="ri-checkbox-circle-fill"></i>
+        <%= link_to '#', class: 'icon' do %>
+          <i class="ri-checkbox-blank-circle-line"></i>
+        <% end %>
+      </div>
+
+
       <% end %>
-    </div>
 
-
-    <% else %>
-    <div class="d-flex justify-content-between align-items-center">
-      <span class="text-secondary">
-        <%= todo_item.description %>
-      </span>
-
-      <%= link_to '#', class: 'icon' do %>
-        <i class="ri-checkbox-blank-circle-line"></i>
-      <% end %>
-    </div>
-
-
+      </li>
     <% end %>
+  </ul>
 
-    </li>
+  <%= form_for([@todo_list, @todo_item]) do |f|%>
+    <div class="input-group mt-5">
+      <%= f.text_field :description, class: 'form-control', placeholder: 'Add a New To Do' %>
+      <div class="input-group-append">
+        <%= f.submit "Add", class: "btn btn-primary input-group-btn" %>
+      </div>
+    </div>
   <% end %>
-</ul>
+
+
 </div>
 
 
