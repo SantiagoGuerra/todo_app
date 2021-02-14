@@ -1,5 +1,6 @@
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: %i[ show edit update destroy ]
+  before_action :authorize_user
 
   # GET /todo_lists or /todo_lists.json
   def index
@@ -66,5 +67,14 @@ class TodoListsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def todo_list_params
       params.require(:todo_list).permit(:title)
+    end
+
+    def authorize_user 
+      if(current_user)
+        @user = User.find(current_user.id)
+        redirect_to root_url unless current_user == @user
+      else
+        redirect_to root_url
+      end 
     end
 end

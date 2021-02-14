@@ -1,4 +1,5 @@
 class TodoItemsController < ApplicationController
+  before_action :authorize_user
   before_action :set_todo_list
   before_action :set_todo_item, only: [:show, :edit, :update, :destroy]
 
@@ -60,5 +61,14 @@ class TodoItemsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def todo_item_params
       params.require(:todo_item).permit(:description, :completed, :todo_list_id)
+    end
+
+    def authorize_user 
+      if(current_user)
+        @user = User.find(current_user.id)
+        redirect_to root_url unless current_user == @user
+      else
+        redirect_to root_url
+      end 
     end
 end
