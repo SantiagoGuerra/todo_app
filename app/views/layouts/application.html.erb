@@ -14,6 +14,63 @@
   </head>
 
   <body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+      <div class="justify-content-between d-flex w-100" id="navbarSupportedContent">
+      <form class="form-inline my-2 my-lg-0 mr-5">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav ml-5">
+
+          <% if current_user%>
+            <li class="nav-item active">
+              <%= link_to todo_lists_path, class: 'icon nav-link' do %> 
+                <i class="ri-todo-line"></i>
+                <span>  
+                  Todo List
+                </span>
+              <% end %>
+            </li>
+
+            <li class="nav-item active">
+              <%= link_to destroy_user_session_path, method: :delete,class: 'icon nav-link' do %> 
+                <i class="ri-logout-circle-line"></i>
+                <span>  
+                  Log Out
+                </span>
+              <% end %>
+            </li>
+
+          <% else %>
+
+            <li class="nav-item active">
+              <%= link_to new_user_registration_path, class: 'icon nav-link' do %> 
+                <i class="ri-user-add-line"></i>
+                <span>  
+                  Sign Up
+                </span>
+              <% end %>
+            </li>
+
+            <li class="nav-item active">
+              <%= link_to new_user_session_path, class: 'icon nav-link' do %> 
+                <i class="ri-logout-circle-r-line"></i>
+                <span>  
+                  Log In
+                </span>
+              <% end %>
+            </li>
+
+          <% end %>
+          
+        </ul>
+        
+        
+      </div>
+    </nav>
+  
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">

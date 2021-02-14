@@ -37,3 +37,13 @@
 #notice {
   color: transparent;
 }
+
+.nav-link {
+  display: flex;
+  align-items: center;
+
+  & > span {
+    display: inline-block;
+    margin-left: 0.5rem;
+  }
+}
