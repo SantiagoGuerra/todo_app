@@ -47,3 +47,12 @@
     margin-left: 0.5rem;
   }
 }
+
+.pagy-bootstrap-nav {
+  margin-top: 8rem;
+  position: absolute;
+  bottom: -5rem;
+  & > .pagination {
+    margin-bottom: 0;
+  }
+}

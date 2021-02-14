@@ -17,6 +17,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'redis'
 gem 'redis-namespace'
 gem 'redis-rails'
+gem 'pagy'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

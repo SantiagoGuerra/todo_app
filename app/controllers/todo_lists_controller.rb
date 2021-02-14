@@ -5,7 +5,7 @@ class TodoListsController < ApplicationController
 
   # GET /todo_lists or /todo_lists.json
   def index
-    @todo_lists = TodoList.all
+    @pagy, @todo_lists = pagy(TodoList.all)
   end
 
   # GET /todo_lists/1 or /todo_lists/1.json

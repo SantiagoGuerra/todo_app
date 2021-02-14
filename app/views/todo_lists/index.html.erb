@@ -28,13 +28,9 @@
        <span class="badge badge-pill badge-<%=todo_list.badge_color%>">
         <%= todo_list.status %>
       </span>
-
-
     </div>
-
-      
-      
-
     </li>
   <% end %>
 </ul>
+
+<%= raw pagy_bootstrap_nav(@pagy).html_safe%>
