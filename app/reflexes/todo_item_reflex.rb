@@ -17,4 +17,9 @@ class TodoItemReflex < ApplicationReflex
     todo_item = TodoItem.find(element.dataset.id)
     todo_item.update(completed: true)
   end
+
+  def delete
+    todo_item = TodoItem.find(element.dataset.id)
+    todo_item.destroy
+  end
 end

@@ -1,4 +1,4 @@
-<%= form_with(model: [@todo_item.todo_list, @todo_item]) do |f| %>
+<%= form_with(model: [@todo_item.todo_list, @todo_item], class: 'p-5') do |f| %>
   <% if @todo_item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@todo_item.errors.count, "error") %> prohibited this todo_item from being saved:</h2>
@@ -13,17 +13,9 @@
 
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :completed %><br />
-    <%= f.check_box :completed %>
-  </div>
-  <div class="field">
-    <%= f.label :todo_list %><br />
-    <%= f.text_field :todo_list %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions mt-4">
+    <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>
