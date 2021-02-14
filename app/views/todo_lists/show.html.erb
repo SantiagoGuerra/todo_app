@@ -43,7 +43,7 @@
         </span>
 
         <%= link_to '#', class: 'icon', data: {
-          reflex: 'click->TodoItem#mark_incompleted', id: todo_item.id
+          reflex: 'click->TodoItem#mark_incompleted', id: todo_item.id, current_user: current_user.id
         } do %>
           <i class="ri-checkbox-circle-fill"></i>
         <% end %>

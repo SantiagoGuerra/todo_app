@@ -74,9 +74,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
-          <p id="notice"><%= notice %></p>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
+          <% flash.each do |type, msg| %>
+            <div class="alert <%=type%> alert-<%=type%>">
+              <%= msg %>
+            </div>
+          <% end %>
           <div class="card mt-5">
             <%= yield %>
           </div>

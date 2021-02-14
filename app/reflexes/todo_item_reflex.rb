@@ -2,8 +2,15 @@
 
 class TodoItemReflex < ApplicationReflex
   def mark_incompleted
+    current_user = element.dataset.current_user
     todo_item = TodoItem.find(element.dataset.id)
-    todo_item.update(completed: false)
+    author = todo_item.todo_list.user
+    user = User.find(current_user)
+    if(user.id != author.id)
+      flash[:danger] = 'You do not have permissions'
+    else
+      todo_item.update(completed: false)
+    end
   end
 
   def mark_completed

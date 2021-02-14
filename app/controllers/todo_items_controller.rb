@@ -2,6 +2,7 @@ class TodoItemsController < ApplicationController
   before_action :authorize_user
   before_action :set_todo_list
   before_action :set_todo_item, only: [:show, :edit, :update, :destroy]
+  before_action :user_has_persmissions, only: [:create]
 
   # GET todo_lists/1/todo_items
   def index
@@ -70,5 +71,15 @@ class TodoItemsController < ApplicationController
       else
         redirect_to root_url
       end 
+    end
+
+    def user_has_persmissions
+      todo_list = TodoList.find(params[:todo_list_id]) 
+      user = User.find(current_user.id)
+      author = todo_list.user
+      if(user.id != author.id)
+        flash[:danger] = 'You do not have permissions'
+        redirect_to todo_lists_url
+      end
     end
 end
