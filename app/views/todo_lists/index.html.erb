@@ -13,22 +13,46 @@
   <% @todo_lists.each do |todo_list| %>
     <li class="list-group-item">
 
-    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-between">
+      
+        <% if todo_list.user.id == current_user.id %>
+          <div>
+              <p class="m-0">
+              <%= link_to todo_list.title, todo_list, class: 'text-decoration-none' %>
+              </p>
 
-    <div>
-        <p class="m-0">
-        <%= link_to todo_list.title, todo_list, class: 'text-decoration-none' %>
-        </p>
+              <p class="text-secondary m-0">
+                <%= todo_list.user.username%>
+              </p>
+            </div>
 
-        <p class="text-secondary m-0">
-          <%= todo_list.user.username%>
-        </p>
-      </div>
+            <span class="badge badge-pill badge-<%=todo_list.badge_color%>">
+              <%= todo_list.status %>
+            </span>
 
-       <span class="badge badge-pill badge-<%=todo_list.badge_color%>">
-        <%= todo_list.status %>
-      </span>
-    </div>
+        <% else %>
+          <div>
+              <p class="m-0">
+              <%= link_to todo_list.title, todo_list, class: 'text-decoration-none' %>
+              </p>
+
+              <p class="text-secondary m-0">
+                <%= todo_list.user.username%>
+              </p>
+            </div>
+
+
+            <div>
+              <span class="badge badge-pill badge-dark">
+                Private
+              </span>
+
+              <span class="badge badge-pill badge-<%=todo_list.badge_color%>">
+                <%= todo_list.status %>
+              </span>
+            </div>
+        <% end %>
+      </div> 
     </li>
   <% end %>
 </ul>

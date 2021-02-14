@@ -1,7 +1,7 @@
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: %i[ show edit update destroy ]
   before_action :authorize_user
-  before_action :user_has_persmissions, only: [:edit]
+  before_action :user_has_persmissions, only: %i[ show edit update destroy]
 
   # GET /todo_lists or /todo_lists.json
   def index
@@ -84,7 +84,7 @@ class TodoListsController < ApplicationController
       user = User.find(current_user.id)
       author = todo_list.user
       if(user.id != author.id)
-        flash[:danger] = 'You do not have permissions'
+        flash[:warning] = 'Private To Do List, you do not have access.'
         redirect_to todo_lists_url
       end
     end
