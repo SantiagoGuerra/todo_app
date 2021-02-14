@@ -42,7 +42,9 @@
           </s>
         </span>
 
-        <%= link_to '#', class: 'icon' do %>
+        <%= link_to '#', class: 'icon', data: {
+          reflex: 'click->TodoItem#mark_incompleted', id: todo_item.id
+        } do %>
           <i class="ri-checkbox-circle-fill"></i>
         <% end %>
       </div>
@@ -54,7 +56,9 @@
           <%= todo_item.description %>
         </span>
 
-        <%= link_to '#', class: 'icon' do %>
+        <%= link_to '#', class: 'icon', data: {
+          reflex: 'click->TodoItem#mark_completed', id: todo_item.id
+        } do %>
           <i class="ri-checkbox-blank-circle-line"></i>
         <% end %>
       </div>
