@@ -24,3 +24,16 @@
 .text-checked {
   color: var(--teal)
 }
+
+.notice, #notice {
+  position: absolute;
+  display: flex;
+  margin-top: 1rem;
+  z-index: 999;
+  height: 100px;
+  color: var(--success);
+}
+
+#notice {
+  color: transparent;
+}
