@@ -16,8 +16,12 @@
   <body class="bg-light">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
+
+
       <div class="justify-content-between d-flex w-100" id="navbarSupportedContent">
-      <%= form_tag(search_path, :method => "get",   
+      
+<% if current_user %>
+<%= form_tag(search_path, :method => "get",   
           class: 'navbar-form navbar-left') do %>  
         <div class="input-group">  
           <%= search_field_tag :search, params[:search], placeholder: "Search by description", class: "form-control" %>  
@@ -26,6 +30,7 @@
           </div>  
         </div>  
       <% end %>
+<% end %>
         <ul class="navbar-nav ml-5">
 
           <% if current_user%>
