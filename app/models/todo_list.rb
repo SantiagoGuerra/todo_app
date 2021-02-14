@@ -1,4 +1,6 @@
 class TodoList < ApplicationRecord
+  validates :title, length: { minimum: 5, message: 'too short' }
+
   has_many :todo_items
   belongs_to :user
 

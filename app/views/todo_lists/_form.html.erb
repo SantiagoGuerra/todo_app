@@ -3,13 +3,13 @@
   
   <% if todo_list.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(todo_list.errors.count, "error") %> prohibited this todo_list from being saved:</h2>
+      <p><%= pluralize(todo_list.errors.count, "error") %> prohibited this todo_list from being saved:</p>
 
-      <ul>
+      <ol>
         <% todo_list.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="text-danger"><%= error.full_message %></li>
         <% end %>
-      </ul>
+      </ol>
     </div>
   <% end %>
 

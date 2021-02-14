@@ -1,13 +1,13 @@
 <%= form_with(model: [@todo_item.todo_list, @todo_item], class: 'p-5') do |f| %>
   <% if @todo_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@todo_item.errors.count, "error") %> prohibited this todo_item from being saved:</h2>
+      <p><%= pluralize(@todo_item.errors.count, "error") %> prohibited this todo_item from being saved:</hp>
 
-      <ul>
+      <ol>
       <% @todo_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li class="text-danger"><%= msg %></li>
       <% end %>
-      </ul>
+      </ol>
     </div>
   <% end %>
 
