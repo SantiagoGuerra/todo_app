@@ -16,6 +16,8 @@ gem 'nested_scaffold'
 gem 'redis'
 gem 'redis-namespace'
 gem 'redis-rails'
+gem "hiredis", "~> 0.6.3"
+gem "redis-session-store", "~> 0.11.3"
 gem 'pagy'
 
 group :development, :test do
