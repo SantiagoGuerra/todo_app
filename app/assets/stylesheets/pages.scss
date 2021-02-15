@@ -1,0 +1,81 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.todo-item {
+  transition: 2s all ease-in-out;
+  overflow: hidden;
+
+  &:hover .icon_actions {
+    transform: translateX(0);
+  }
+}
+
+.icon {
+  & > i {
+    font-size: 24px;
+  }
+
+  & > .ri-checkbox-circle-fill {
+    color: var(--teal)
+  }
+
+  & > .ri-checkbox-blank-circle-line {
+    color: var(--secondary)
+  }
+
+  &:hover {
+    outline: none;
+    border: none;
+    text-decoration: none;
+  }
+
+  &_actions {
+    transition: .3s all ease-in-out;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: rgb(226, 226, 226);
+    width: 120px;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
+    transform: translateX(-200%);
+    left: 0;
+  }
+}
+
+.text-checked {
+  color: var(--teal)
+}
+
+.notice, #notice {
+  position: absolute;
+  display: flex;
+  margin-top: 1rem;
+  z-index: 999;
+  height: 100px;
+  color: var(--success);
+}
+
+#notice {
+  color: transparent;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+
+  & > span {
+    display: inline-block;
+    margin-left: 0.5rem;
+  }
+}
+
+.pagy-bootstrap-nav {
+  margin-top: 8rem;
+  position: absolute;
+  bottom: -5rem;
+  & > .pagination {
+    margin-bottom: 0;
+  }
+}

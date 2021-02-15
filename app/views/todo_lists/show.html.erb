@@ -1,0 +1,120 @@
+
+<div class="card-header d-flex justify-content-between align-items-center">
+  
+  <div class="align-items-center">
+
+  <div>
+
+  </div>
+    <h2 class="mt-3">
+      <%= @todo_list.title %>
+    </h2>
+   
+    <p class="text-secondary">
+      <%= @todo_list.percent_complete %>% Complete (<%=@todo_list.completed_items%>/<%=@todo_list.total_items%>) Todo Items
+    </p>
+     <span class="badge badge-pill badge-<%=@todo_list.badge_color%>">
+        <%= @todo_list.status %>
+      </span>
+
+
+  </div>
+  
+  
+  <%= link_to 'Edit To Do', edit_todo_list_path(@todo_list), class: 'btn btn-secondary btn-sm align-items-center' %>
+</div>
+
+<div class="card-body">
+  <div class="progress mb-4">
+    <div class="progress-bar bg-info" role="progressbar" style="width: <%=@todo_list.percent_complete %>%;" aria-valuenow="<%=@todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100"><%=@todo_list.percent_complete %>%</div>
+  </div>
+
+  <ul class="list-group">
+    <% @todo_list.todo_items.each do |todo_item| %>
+      <li class="list-group-item todo-item">
+
+    
+      <% if todo_item.completed? %>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          
+          <div class="icon_actions">
+
+          <%= link_to edit_todo_list_todo_item_path(@todo_list.id, todo_item.id), class: 'icon icon_delete' do %>
+            <i class="ri-edit-line text-primary"></i>
+          <% end %>
+
+            <%= link_to '#', class: 'icon icon_delete', data: {
+              reflex: 'click->TodoItem#delete', id: todo_item.id, current_user: current_user.id
+            } do %>
+              <i class="ri-delete-bin-6-line text-danger"></i>
+            <% end %>
+          </div>
+
+
+            <span class="text-checked">
+              <s>
+                <%= todo_item.description %>
+              </s>
+            </span>
+
+          </div>
+
+        <%= link_to '#', class: 'icon', data: {
+          reflex: 'click->TodoItem#mark_incompleted', id: todo_item.id, current_user: current_user.id
+        } do %>
+          <i class="ri-checkbox-circle-fill"></i>
+        <% end %>
+      </div>
+
+
+      <% else %>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="icon_actions">
+
+          <%= link_to edit_todo_list_todo_item_path(@todo_list.id, todo_item.id), class: 'icon icon_delete' do %>
+            <i class="ri-edit-line text-primary"></i>
+          <% end %>
+
+            <%= link_to '#', class: 'icon icon_delete', data: {
+              reflex: 'click->TodoItem#delete', id: todo_item.id, current_user: current_user.id
+            } do %>
+              <i class="ri-delete-bin-6-line text-danger"></i>
+            <% end %>
+          </div>
+
+            <span class="text-secondary">
+                <%= todo_item.description %>
+            </span>
+
+          </div>
+
+        <%= link_to '#', class: 'icon', data: {
+          reflex: 'click->TodoItem#mark_completed', id: todo_item.id
+        } do %>
+          <i class="ri-checkbox-blank-circle-line"></i>
+        <% end %>
+      </div>
+
+
+      <% end %>
+
+      </li>
+    <% end %>
+  </ul>
+
+  <%= form_for([@todo_list, @todo_item]) do |f|%>
+    <div class="input-group mt-5">
+      <%= f.text_field :description, class: 'form-control', placeholder: 'Add a New To Do' %>
+      <div class="input-group-append">
+        <%= f.submit "Add", class: "btn btn-primary input-group-btn" %>
+      </div>
+    </div>
+  <% end %>
+
+
+</div>
+
+
